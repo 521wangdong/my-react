@@ -1,4 +1,6 @@
 import React, { useState, useLayoutEffect } from 'react'
+import { Typography, Card, Button } from 'antd';
+const { Title } = Typography;
 
 const Batch = () => {
     const [count, setCount] = useState(0)
@@ -7,32 +9,30 @@ const Batch = () => {
         return new Promise((resolve) => setTimeout(resolve, 100))
     }
     const handleClick = () => {
-        console.log("=== 点击了 ===");
         fetchSome()
             .then(() => {
                 setCount ( c  =>  c  +  1 ) ; 
                 setFlag(f => !f) 
         })
     }
-    return (
-        <div>
-            <h3>批处理</h3>
 
-            <div onClick={handleClick}>Next</div>
+    useLayoutEffect(() => {
+    console.log("Commit");
+    });
+    console.log("Render");
+    return (
+        <Card style={{ width: 600 , margin: `0 auto`}}>
+            <Title>自动批处理</Title>
+
+            <Button type="primary" size="small" onClick={handleClick}>
+            增加
+            </Button>
             <p>count: {count}</p>
             <p style={{ color: flag ? `blue` : `pink` }}>flag: {flag}</p>
-            <LogEvents />
-        </div>
+       </Card>
     )
 
 }
 
-function LogEvents(props) {
-  useLayoutEffect(() => {
-    console.log("Commit");
-  });
-  console.log("Render");
-  return null;
-}
 
 export default Batch
