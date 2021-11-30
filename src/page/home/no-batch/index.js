@@ -1,26 +1,24 @@
 import React, { useState, useLayoutEffect } from 'react'
 import { Typography, Card, Button } from 'antd';
+import { flushSync } from 'react-dom'
 
 const { Title } = Typography;
 
 
-const Batch = () => {
+const NoBatch = () => {
     const [count, setCount] = useState(0)
     const [flag, setFlag] = useState(false)
     
-    function fetchSome() {
-        return new Promise((resolve) => setTimeout(resolve, 100))
-    }
-
 
     const handleClick = () => {
-        setCount ( c  =>  c  +  1 ) ; 
-        setFlag(f => !f)
-        // fetchSome()
-        //     .then(() => {
-        //         setCount ( c  =>  c  +  1 ) ; 
-        //         setFlag(f => !f) 
-        // })
+        flushSync(() => {
+            setCount ( c  =>  c  +  1 )
+        })
+
+        flushSync(() => {
+            setFlag(f => !f) 
+        })
+         
     }
 
     useLayoutEffect(() => {
@@ -29,10 +27,10 @@ const Batch = () => {
     console.log("Render");
     return (
         <Card style={{ width: 600 , margin: `0 auto`}}>
-            <Title>自动批处理</Title>
+            <Title>不想批处理</Title>
 
             <Button type="primary" size="small" onClick={handleClick}>
-            自动批处理增加
+            不想批处理
             </Button>
         
             <p>count: {count}</p>
@@ -44,4 +42,4 @@ const Batch = () => {
 }
 
 
-export default Batch
+export default NoBatch
