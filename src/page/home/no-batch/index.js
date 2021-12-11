@@ -1,5 +1,5 @@
 import React, { useState, useLayoutEffect } from 'react'
-import { Typography, Card, Button } from 'antd';
+import { Typography, Card, Button } from 'antd'
 import { flushSync } from 'react-dom'
 
 const { Title } = Typography;
@@ -12,7 +12,7 @@ const NoBatch = () => {
 
     const handleClick = () => {
         flushSync(() => {
-            setCount ( c  =>  c  +  1 )
+            setCount(c => c + 1)
         })
 
         flushSync(() => {
@@ -22,7 +22,7 @@ const NoBatch = () => {
     }
 
     useLayoutEffect(() => {
-    console.log("Commit");
+    console.log("useLayoutEffect");
     });
     console.log("Render");
     return (

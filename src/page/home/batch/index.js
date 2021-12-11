@@ -14,17 +14,17 @@ const Batch = () => {
 
 
     const handleClick = () => {
-        setCount ( c  =>  c  +  1 ) ; 
-        setFlag(f => !f)
-        // fetchSome()
-        //     .then(() => {
-        //         setCount ( c  =>  c  +  1 ) ; 
-        //         setFlag(f => !f) 
-        // })
+        // setCount ( c  =>  c  +  1 ) ; 
+        // setFlag(f => !f)
+        fetchSome()
+            .then(() => {
+                setCount ( c  =>  c  +  1 ) ; 
+                setFlag(f => !f) 
+        })
     }
 
     useLayoutEffect(() => {
-    console.log("Commit");
+    console.log("useLayoutEffect");
     });
     console.log("Render");
     return (
