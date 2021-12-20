@@ -1,3 +1,5 @@
+import moment from 'moment'
+
 export function fetchProfileData() {
     let userPromise = fetchUser();
     let postsPromise = fetchPosts();
@@ -38,9 +40,9 @@ function fetchUser() {
     console.log("fetch user...");
     return new Promise((resolve) => {
         setTimeout(() => {
-            console.log("===== fetched user =====");
+            console.log(moment().format('YYYY:MM:DD hh:mm:ss'));
             resolve({
-                name: "亚索"
+                time: moment().format('YYYY:MM:DD hh:mm:ss')
             });
         }, 3000);
     });
@@ -846,13 +848,33 @@ let ringoPosts = [{
     "skin_name": "渡世行者|前尘"
 }]
 
-function fetchPosts() {
-    let ringoPostsAtTheTime = ringoPosts;
+// function fetchPosts() {
+//     let ringoPostsAtTheTime = ringoPosts;
+//     console.log("fetch posts...");
+//     return new Promise((resolve) => {
+//         setTimeout(() => {
+//             console.log("===== fetched posts =====");
+//             resolve(ringoPostsAtTheTime);
+//         }, 5000);
+//     });
+// }
+
+
+const fetchPosts = async () => {
+    const info = await fetch(`https://mini.aphoto.cn/wx/home/pcGetHome?t=1640018214062`)
+    .then(response => response.json())
+    .then(res => {return res})
+
+    console.log(info, 'info');
+
+    // let ringoPostsAtTheTime = ringoPosts;
     console.log("fetch posts...");
     return new Promise((resolve) => {
         setTimeout(() => {
             console.log("===== fetched posts =====");
-            resolve(ringoPostsAtTheTime);
+            // resolve(ringoPostsAtTheTime);
+            resolve(info);
         }, 5000);
     });
+
 }

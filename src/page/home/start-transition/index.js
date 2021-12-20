@@ -8,8 +8,10 @@ const StartTransition = () => {
     
 
     useEffect(() => {
+        // https://mini.aphoto.cn/wx/goods/detail?id=24001&t=1640018499508
+        // https://mini.aphoto.cn/wx/home/pcGetHome?t=1640018214062
 
-        fetch(`http://jsonplaceholder.typicode.com/albums/1/photos`)
+        fetch(`https://mini.aphoto.cn/wx/goods/detail?id=24001&t=1640018499508`)
             .then(response => response.json())
             .then(json => console.log(json))
 
