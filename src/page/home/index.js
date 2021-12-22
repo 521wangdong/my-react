@@ -33,17 +33,23 @@ const Home = () => {
 
         <div className="btn-container">
 
-          <Button type="primary" size="small">
-              <Link to="/start-transition">startTransition</Link>
-          </Button>
-
-          <Button type="primary" size="small">
+        <Button type="primary" size="small">
               <Link to="/suspense">Suspense</Link>
           </Button>
       
           <Button type="primary" size="small">
               <Link to="/suspense-list">SuspenseList</Link>
           </Button>
+
+          <Button type="primary" size="small">
+              <Link to="/start-transition">startTransition</Link>
+          </Button>
+          
+
+          <Button type="primary" size="small">
+              <Link to="/use-start-transition">UseStartTransition</Link>
+          </Button>
+          
         </div>
 
       </Card>

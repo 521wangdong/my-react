@@ -1,6 +1,6 @@
 import { useEffect, useState, useLayoutEffect, Suspense, SuspenseList } from "react";
 import { fetchProfileData } from "./fakeApi";
-import { Button } from 'antd'
+import { Button, Card } from 'antd'
 import ErrorComponent from './error-component'
 
 
@@ -11,32 +11,25 @@ const initialResource = fetchProfileData();
 function ProfileListPage() {
   const [resource, setResource] = useState(initialResource);
   return (
-    <>
-
+    <Card style={{ width: 600, margin: `0 auto` }}>
+      <Button type="primary" size="small" onClick={() => setResource(fetchProfileData())}>
+        重新获取数据
+      </Button>
 
       <SuspenseList revealOrder="together">
 
         <Suspense fallback={<><h1>Loading 当前时间</h1></>}>
           <ProfileDetails resource={resource} />
         </Suspense>
-
-
-        <ErrorComponent fallback={<h1>子组件出错了</h1>}>
+        <ErrorComponent fallback={<h1>Banner组件出错了</h1>}>
           <Suspense fallback={<h1>Loading Banner</h1>}>
             <ProfileTimeline resource={resource} />
           </Suspense>
         </ErrorComponent>
 
-        <Button type="primary" size="small" onClick={() => setResource(fetchProfileData())}>
-          重新获取数据
-        </Button>
-
-
-
-
       </SuspenseList>
 
-    </>
+    </Card>
   );
 }
 

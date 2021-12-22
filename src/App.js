@@ -4,6 +4,7 @@ import Home from './page/home'
 import Batch from './page/home/batch/index'
 import NoBatch from './page/home/no-batch'
 import StartTransition from './page/home/start-transition'
+import UseStartTransition from './page/home/use-transition'
 import SuspensePage from './page/home/suspense'
 import ProfileListPage from './page/home/suspense-list'
 
@@ -24,6 +25,7 @@ function App() {
         <Route path="/batch" component={Batch} />
         <Route path="/no-batch" component={NoBatch} />
         <Route path="/start-transition" component={StartTransition} />
+        <Route path="/use-start-transition" component={UseStartTransition} />
         <Route path="/suspense" component={SuspensePage} />
         <Route path="/suspense-list" component={ProfileListPage} />
         <Route path="/test" render={() => { return <div>测试页面</div> }} />

@@ -13,26 +13,19 @@ function ProfilePage() {
   return (
     <>
 
-
-
-
+      <Button type="primary" size="small" onClick={() => setResource(fetchProfileData())}>
+        重新获取数据
+      </Button>
       <Suspense fallback={<><h1>Loading 当前时间</h1></>}>
         <ProfileDetails resource={resource} />
       </Suspense>
 
 
-      <ErrorComponent fallback={<h1>子组件出错了</h1>}>
+      <ErrorComponent fallback={<h1>Banner组件出错了</h1>}>
         <Suspense fallback={<h1>Loading Banner</h1>}>
           <ProfileTimeline resource={resource} />
         </Suspense>
       </ErrorComponent>
-
-      <Button type="primary" size="small" onClick={() => setResource(fetchProfileData())}>
-        重新获取数据
-      </Button>
-
-
-
 
     </>
   );

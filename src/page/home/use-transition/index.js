@@ -1,22 +1,29 @@
-import { useEffect, useState, useLayoutEffect, Suspense, SuspenseList, startTransition } from "react";
-import { fetchProfileData } from "./fakeApi";
-import { Button, Card } from 'antd'
+import { useEffect, useState, useLayoutEffect, Suspense, SuspenseList } from "react"
+import { fetchProfileData } from "./fakeApi"
+import { Card } from 'antd'
 import ErrorComponent from './error-component'
+
+import Button from './btn'
 
 
 // https://codesandbox.io/s/romantic-architecture-ht3qi?file=/src/App.js
 
 const initialResource = fetchProfileData();
 
-function StartTransition() {
+function UseStartTransition() {
   const [resource, setResource] = useState(initialResource);
+
+
+  function afresh () {
+    setResource(fetchProfileData())
+  }
+
+
   return (
     <Card style={{ width: 600, margin: `0 auto` }}>
-      <Button type="primary" size="small" onClick={() => startTransition(() => {
-        setResource(fetchProfileData())
-      })}>
-        重新获取数据
-      </Button>
+      
+      <Button afresh={afresh}/>
+      
 
       <SuspenseList revealOrder="together">
 
@@ -88,4 +95,4 @@ function ProfileTimeline({ resource }) {
   );
 }
 
-export default StartTransition;
+export default UseStartTransition;
