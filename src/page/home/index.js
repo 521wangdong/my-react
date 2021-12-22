@@ -38,7 +38,11 @@ const Home = () => {
           </Button>
 
           <Button type="primary" size="small">
-              <Link to="/suspense">suspense</Link>
+              <Link to="/suspense">Suspense</Link>
+          </Button>
+      
+          <Button type="primary" size="small">
+              <Link to="/suspense-list">SuspenseList</Link>
           </Button>
         </div>
 

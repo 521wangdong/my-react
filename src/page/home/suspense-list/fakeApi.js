@@ -874,7 +874,7 @@ const fetchPosts = async () => {
             console.log("===== fetched posts =====");
             // resolve(ringoPostsAtTheTime);
             resolve(info);
-        }, 3000);
+        }, 2000);
     });
 
 }
