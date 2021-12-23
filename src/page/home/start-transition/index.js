@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/alt-text */
 import { useEffect, useState, useLayoutEffect, Suspense, SuspenseList, startTransition } from "react";
 import { fetchProfileData } from "./fakeApi";
 import { Button, Card } from 'antd'

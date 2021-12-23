@@ -4,7 +4,10 @@ import { flushSync } from 'react-dom'
 
 const { Title } = Typography;
 
-
+function fetchSome() {
+        return new Promise((resolve) => setTimeout(resolve, 100))
+}
+    
 const NoBatch = () => {
     const [count, setCount] = useState(0)
     const [flag, setFlag] = useState(false)
@@ -15,8 +18,11 @@ const NoBatch = () => {
             setCount(c => c + 1)
         })
 
-        flushSync(() => {
-            setFlag(f => !f) 
+        // setCount(c => c + 1)
+
+        fetchSome()
+            .then(() => {
+                setFlag(f => !f) 
         })
          
     }
